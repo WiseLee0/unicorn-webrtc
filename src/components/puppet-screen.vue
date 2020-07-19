@@ -124,7 +124,7 @@ export default class Screen extends Vue {
   watchDataCannel(ev: RTCDataChannelEvent) {
     ev.channel.onmessage = async e => {
       const { type, data } = JSON.parse(e.data);
-      if (type == "move" || type == "click") {
+      if (type == "move" || type == "click" || type == "rightClick") {
         data.screen = {
           width: window.screen.width * window.devicePixelRatio,
           height: window.screen.height * window.devicePixelRatio

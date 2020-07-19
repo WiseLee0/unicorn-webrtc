@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <control></control>
+    <Screenshot></Screenshot>
   </div>
 </template>
 <script lang="ts">

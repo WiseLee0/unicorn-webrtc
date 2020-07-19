@@ -21,6 +21,16 @@ module.exports = {
       entry: 'src/pages/multiplayer/main.ts',
       template: 'public/index.html',
       filename: 'multiplayer.html'
+    },
+    screenshot: {
+      entry: 'src/pages/screenshot/main.ts',
+      template: 'public/index.html',
+      filename: 'screenshot.html'
+    },
+    record: {
+      entry: 'src/pages/record/main.ts',
+      template: 'public/index.html',
+      filename: 'record.html'
     }
   } : {
       index: {

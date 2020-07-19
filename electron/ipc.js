@@ -46,6 +46,7 @@ module.exports = () => {
     sendMultiplayerWindow('multiplayer-close', name)
   })
   ipcMain.on('screenshot-close', () => {
+    sendPuppetWindow('screenshot-close')
     closeScreenshotWindow()
   })
   ipcMain.on('puppet-close', () => {

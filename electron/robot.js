@@ -16,6 +16,14 @@ function handleClick(data) {
   robot.mouseClick()
 }
 
+function handleRightClick(data) {
+  let { clientX, clientY, screen, video } = data
+  let x = clientX * screen.width / video.width
+  let y = clientY * screen.height / video.height
+  robot.moveMouse(x, y)
+  robot.mouseClick('right')
+}
+
 function handleKey(data) {
   const modifiers = []
   if (data.meta) modifiers.push('meta')
@@ -43,6 +51,8 @@ module.exports = () => {
       handleMove(data)
     } else if (type === 'click') {
       handleClick(data)
+    } else if (type === 'rightClick') {
+      handleRightClick(data)
     } else if (type === 'key') {
       handleKey(data)
     }

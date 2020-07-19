@@ -2,6 +2,7 @@
   <div class="group">
     <operate v-if="panelFlag"></operate>
     <component :is="currentCompent" :data="connectData" @close="onClose" v-else></component>
+    <i class="el-icon-error" @click="closePupput" v-if="panelFlag"></i>
   </div>
 </template>
 
@@ -31,6 +32,10 @@ export default class Group extends Vue {
     ipcRenderer.on("join-status", this.watchJoinStatus);
   }
 
+  closePupput() {
+    ipcRenderer.send("puppet-close");
+  }
+
   // 加入房间
   watchJoinStatus(e: any, data: TData) {
     this.currentCompent = data.label;
@@ -44,4 +49,16 @@ export default class Group extends Vue {
 }
 </script>
 
-<style  lang="stylus"></style>
+<style  lang="stylus">
+.el-icon-error
+  position absolute
+  right 15px
+  top 10px
+  font-size 24px
+  transition all 0.5s
+  cursor pointer
+  -webkit-app-region no-drag
+
+.el-icon-error:hover
+  transform scale(1.2)
+</style>

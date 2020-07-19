@@ -3,6 +3,7 @@
     <operate v-if="panelFlag"></operate>
     <component :is="currentCompent" :data="connectData" @close="onClose" v-else></component>
     <video ref="screenshot" v-show="false" autoplay></video>
+    <i class="el-icon-error" @click="closePupput"></i>
   </div>
 </template>
 
@@ -36,6 +37,11 @@ export default class Puppet extends Vue {
   created() {
     ipcRenderer.on("connect-status", this.watchConnectStatus);
     ipcRenderer.on("screen-shot", this.watchScreenShot);
+    ipcRenderer.on("screenshot-close", this.resumeScreenShot);
+  }
+
+  closePupput() {
+    ipcRenderer.send("puppet-close");
   }
 
   // 切换面板
@@ -86,7 +92,24 @@ export default class Puppet extends Vue {
       }
     };
   }
+
+  // 上张截图完成，恢复截图功能
+  resumeScreenShot() {
+    this.loaded = false;
+  }
 }
 </script>
 
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+.el-icon-error
+  position absolute
+  right 15px
+  top 10px
+  font-size 24px
+  transition all 0.5s
+  cursor pointer
+  -webkit-app-region no-drag
+
+.el-icon-error:hover
+  transform scale(1.2)
+</style>

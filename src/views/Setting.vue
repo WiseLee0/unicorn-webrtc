@@ -29,14 +29,20 @@
     <h3 class="title">说明</h3>
     <span class="desc">所有文件存储都在桌面</span>
     <span class="desc">有 bug 请联系我，祝你愉快！</span>
+    <i class="el-icon-error" @click="closePupput"></i>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { ipcRenderer } from 'electron';
 
 @Component
-export default class Setting extends Vue {}
+export default class Setting extends Vue {
+  closePupput() {
+    ipcRenderer.send("puppet-close");
+  }
+}
 </script>
 
 <style scoped lang="stylus">
@@ -72,4 +78,16 @@ export default class Setting extends Vue {}
     font-family 'Times New Roman', Times, serif
     line-height 24px
     margin-left 20px
+
+.el-icon-error
+  position absolute
+  right 15px
+  top 10px
+  font-size 24px
+  transition all 0.5s
+  cursor pointer
+  -webkit-app-region no-drag
+
+.el-icon-error:hover
+  transform scale(1.2)
 </style>

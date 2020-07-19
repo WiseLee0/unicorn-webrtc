@@ -107,6 +107,17 @@ export default class Control extends Vue {
       };
       dc.send(JSON.stringify({ type: "click", data }));
     };
+    window.oncontextmenu = (e: MouseEvent) => {
+      const data = {
+        clientX: e.clientX,
+        clientY: e.clientY,
+        video: {
+          width: this.$refs.video.getBoundingClientRect().width,
+          height: this.$refs.video.getBoundingClientRect().height
+        }
+      };
+      dc.send(JSON.stringify({ type: "rightClick", data }));
+    };
   }
 }
 </script>

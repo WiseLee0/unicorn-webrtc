@@ -4,25 +4,19 @@
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
-    <i class="el-icon-error" @click="closePupput"></i>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Tab from "@/components/tab.vue";
-import { ipcRenderer } from "electron";
 
 @Component({
   components: {
     Tab
   }
 })
-export default class Home extends Vue {
-  closePupput() {
-    ipcRenderer.send("puppet-close");
-  }
-}
+export default class Home extends Vue {}
 </script>
 
 <style scoped lang="stylus">
