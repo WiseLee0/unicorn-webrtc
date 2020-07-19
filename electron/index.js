@@ -1,0 +1,21 @@
+const { app } = require('electron')
+const handleIPC = require('./ipc.js')
+const { create: createPuppetWindow, show: showPuppetWindow } = require('./windows/puppet.js')
+const dataCannel = require('./robot.js')
+const shortcut = require('./shortcut.js')
+const tray = require('./tray/index.js')
+const gotTheLock = app.requestSingleInstanceLock()
+if (!gotTheLock) app.quit()
+app.on('second-instance', () => {
+  showPuppetWindow()
+})
+app.on('ready', () => {
+  createPuppetWindow()
+  handleIPC()
+  dataCannel()
+  shortcut()
+  tray()
+})
+app.on('activate', () => {
+  showPuppetWindow()
+})

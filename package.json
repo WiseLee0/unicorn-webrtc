@@ -1,0 +1,77 @@
+{
+  "name": "unicorn",
+  "version": "1.0.0",
+  "private": true,
+  "main": "electron/index.js",
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "ele": "electron .",
+    "pack": "yarn run build && electron-builder build --win"
+  },
+  "dependencies": {
+    "@better-scroll/core": "^2.0.0-beta.10",
+    "@better-scroll/mouse-wheel": "^2.0.0-beta.10",
+    "@better-scroll/scroll-bar": "^2.0.0-beta.10",
+    "core-js": "^3.6.5",
+    "electron-is-dev": "^1.2.0",
+    "element-ui": "^2.13.2",
+    "vkey": "^1.0.1",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.2",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0",
+    "ws": "^7.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "12.12.6",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-router": "~4.4.0",
+    "@vue/cli-plugin-typescript": "~4.4.0",
+    "@vue/cli-plugin-vuex": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "about-window": "^1.13.4",
+    "babel-plugin-component": "^1.1.1",
+    "electron": "^9.1.0",
+    "electron-builder": "^22.7.0",
+    "electron-builder-squirrel-windows": "^22.7.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "typescript": "~3.9.3",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "build": {
+    "appId": "com.wiselee.wiselee",
+    "productName": "wiselee",
+    "files": [
+      "dist",
+      "electron"
+    ],
+    "asar": true,
+    "directories": {
+      "app": "./",
+      "output": "project"
+    },
+    "copyright": "Copyright © 2020 wiselee",
+    "win": {
+      "icon": "src/assets/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "language": "2052",
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
