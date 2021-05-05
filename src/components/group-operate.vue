@@ -1,8 +1,8 @@
 <template>
   <div class="operate">
     <div class="group-up">
-      <h3>遇见你我该是有多么幸运啊</h3>
-      <h3>I was so lucky to meet you</h3>
+      <h3>欢迎加入房间聊天</h3>
+      <h3>Welcome to the chat</h3>
     </div>
     <div class="down group-down">
       <el-input placeholder="输入你的昵称" v-model="name" :maxlength="7"></el-input>
